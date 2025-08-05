@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nagpapp-deployment
+  namespace: public
+  labels:
+    app: nagpapp
+spec:
+  replicas: 4
+  strategy:
+    type: RollingUpdate  # supports rolling updates by default
+  selector:
+    matchLabels:
+      app: nagpapp
+  template:
+    metadata:
+      labels:
+        app: nagpapp
+    spec:
+      containers:
+        - name: nagpapp-container
+          image: tejpratap1/nagp-app:latest
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: app-config
+            - secretRef:
+                name: app-secrets
