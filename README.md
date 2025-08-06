@@ -10,8 +10,9 @@ This repository contains Kubernetes manifests structured according to industry b
 ```
 nagp-k8s-devops/
 ├── kubernetes/config/
-│   ├── db-config-and-secret.yaml         # ConfigMap and Secret for database configuration
-│   ├── db-secret.yaml                    # (Optional) Secret for database credentials
+│   ├── namespaces.yaml                   # namespace for deployment configuration
+│   ├── app-config.yaml                   # ConfigMap for database configuration
+│   ├── app-secrets.yaml                  # Secret for database credentials
 │
 ├── kubernetes/database/
 │   ├── postgres-deployment.yaml          # Deployment manifest for PostgreSQL
@@ -20,9 +21,9 @@ nagp-k8s-devops/
 │   ├── postgres-initdb-configmap.yaml    # ConfigMap containing init.sql to initialize the DB
 │
 ├── kubernetes/app/
-│   ├── myservice-deployment.yaml         # Deployment manifest for Spring Boot microservice
-│   ├── myservice-service.yaml            # ClusterIP Service for the microservice
-│   ├── myservice-ingress.yaml            # Ingress for external HTTP access
+│   ├── nagpapp-deployment.yaml           # Deployment manifest for Spring Boot microservice
+│   ├── nagpapp-service.yaml              # ClusterIP Service for the microservice
+│   ├── nagpapp-ingress.yaml              # Ingress for external HTTP access
 │
 ├── src/                                  # Java Spring Boot source code
 ├── pom.xml                               # Maven project dependencies
